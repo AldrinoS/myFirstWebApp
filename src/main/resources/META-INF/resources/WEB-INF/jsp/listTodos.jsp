@@ -6,10 +6,11 @@
         <title>List Todos Page</title>
     </head>
     <body>
+    <div class="container">
         <div>Welcome ${name}</div>
         <hr>
         <h1>Your Todos</h1>
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -29,6 +30,7 @@
                 </c:forEach>
             </tbody>
         </table>
+    </div>
         <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
         <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
     </body>
