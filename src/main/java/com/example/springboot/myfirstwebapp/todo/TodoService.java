@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TodoService {
@@ -13,12 +14,12 @@ public class TodoService {
     private static int todosCount = 0;
 
     static {
-        todos.add(new Todo(++todosCount, "in28Min", "Learn AWS", LocalDate.now().plusYears(1), false));
-        todos.add(new Todo(++todosCount, "in28Min", "Learn GCP", LocalDate.now().plusYears(1), false));
+        todos.add(new Todo(++todosCount, "name", "Learn AWS", LocalDate.now().plusYears(1), false));
+        todos.add(new Todo(++todosCount, "name", "Learn GCP", LocalDate.now().plusYears(1), false));
     }
 
     public List<Todo> findByUserName(String name) {
-        return todos;
+        return todos.stream().filter(todo -> name.equalsIgnoreCase(todo.getUsername())).collect(Collectors.toList());
     }
 
     public void addTodo(String username, String description, LocalDate targetDate, boolean isDone) {
